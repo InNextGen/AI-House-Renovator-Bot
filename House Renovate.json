@@ -1,0 +1,2959 @@
+{
+  "name": "House Renovate",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        688
+      ],
+      "id": "4c7cc8bc-cee3-4fc1-863c-ab3c3e7c2b02",
+      "name": "Telegram Trigger1",
+      "webhookId": "41879021-9f97-43d5-a744-35f33de0d249",
+      "credentials": {
+        "telegramApi": {
+          "id": "23iz8Sg6B6BAGihW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.photo[$json.message.photo.length - 1].file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        368,
+        688
+      ],
+      "id": "61629598-6e89-478d-b7b1-a1d8c2952c86",
+      "name": "Get a file1",
+      "webhookId": "8600f284-342a-47b5-8f0f-4e02830eac69",
+      "credentials": {
+        "telegramApi": {
+          "id": "23iz8Sg6B6BAGihW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "job_id": "={{ $('Code in JavaScript').item.json.job_id }}",
+            "status": "Processing",
+            "ref_image_url": "={{ $('Get a file1').item.json.result.file_path }}",
+            "dimension": "={{ $('Code in JavaScript').item.json.dimension }}",
+            "image_scene_7": "={{ $json.data.url }}",
+            "prompt_scene_7": "={{ $('Code in JavaScript').item.json.clean_prompt }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "job_id",
+              "displayName": "job_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ref_image_url",
+              "displayName": "ref_image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_7",
+              "displayName": "prompt_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_7",
+              "displayName": "image_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_6",
+              "displayName": "prompt_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_6",
+              "displayName": "image_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_5",
+              "displayName": "prompt_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_5",
+              "displayName": "image_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_4",
+              "displayName": "prompt_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_4",
+              "displayName": "image_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_3",
+              "displayName": "prompt_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_3",
+              "displayName": "image_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_2",
+              "displayName": "prompt_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_2",
+              "displayName": "image_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_1",
+              "displayName": "prompt_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_1",
+              "displayName": "image_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_1",
+              "displayName": "video_clip_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_2",
+              "displayName": "video_clip_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_3",
+              "displayName": "video_clip_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_4",
+              "displayName": "video_clip_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_5",
+              "displayName": "video_clip_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_6",
+              "displayName": "video_clip_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "final_video_url",
+              "displayName": "final_video_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "code",
+              "displayName": "code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "msg",
+              "displayName": "msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2224,
+        1408
+      ],
+      "id": "d8d49dd5-b320-4e7c-890c-a36a4065f18b",
+      "name": "Append row in sheet",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        1696
+      ],
+      "id": "bdc401f5-d0cf-479c-98ec-4be10c5f0789",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2064,
+        1088
+      ],
+      "id": "e6f5962e-8eb5-409d-96b5-72a08d74135a",
+      "name": "Wait1",
+      "webhookId": "56dff089-164e-44c0-93b1-f8403e41f817"
+    },
+    {
+      "parameters": {
+        "jsCode": "const stepData = items[0].json;\nconst currentStep = stepData.step_number;\nconst masterImage = stepData.master_ref;\n\n// --- 1. เลือกรูป Input ---\nlet inputImage = masterImage; \nif (currentStep < 6) {\n  try {\n     const lastResult = $(\"Gen Step Image\").last();\n     const lastImgUrl = lastResult.json.data.resultJson.resultUrls[0];\n     if (lastImgUrl) inputImage = lastImgUrl;\n  } catch (error) {\n     inputImage = masterImage; \n  }\n}\n\n// --- 2. Prompt & Strength (สูตร Pro Camouflage) ---\nlet prompt = \"\";\nlet strength = 0.65; \n\nif (currentStep === 6) {\n   // Step 6: เริ่มเก่า (Strength เบาๆ รักษาโครง)\n   prompt = \"Interior design, same room structure, slightly dusty floor, dim lighting, realistic texture.\";\n   strength = 0.40; \n} \nelse if (currentStep === 5) {\n   // Step 5: เปลี่ยนเฟอร์นิเจอร์เป็นกองของคลุมผ้า\n   prompt = \"Construction site, renovation in progress, furniture covered with white plastic sheets, piles of cardboard boxes, unfinished room.\";\n   strength = 0.65; \n}\nelse if (currentStep === 4) {\n   // Step 4: เปลี่ยนกองผ้า เป็นกองวัสดุก่อสร้าง\n   prompt = \"Hard construction zone, piles of wood and drywalls on floor, raw concrete flooring, removed ceiling, construction tools.\";\n   strength = 0.70;\n}\nelse if (currentStep === 3) {\n   // Step 3: งานระบบดิบๆ\n   prompt = \"Unfinished interior, raw concrete walls, exposed electrical wiring, PVC pipes, heavy dust, construction debris.\";\n   strength = 0.70;\n}\nelse if (currentStep === 2) {\n   // Step 2: ทุบห้อง\n   prompt = \"Demolished room, smashed walls, rubble and bricks on floor, broken windows, dirty, heavy renovation site.\";\n   strength = 0.75;\n}\nelse if (currentStep === 1) {\n   // Step 1: ร้าง\n   prompt = \"Abandoned ruins, decayed building, peeling paint, thick cobwebs, dark atmosphere, haunted, very dirty.\";\n   strength = 0.80;\n}\n\nreturn {\n  json: {\n    step: currentStep,\n    prompt_text: prompt,\n    strength_val: strength,\n    image_input: inputImage,\n    job_id: stepData.job_id\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1488,
+        1808
+      ],
+      "id": "0c762afb-83e2-4776-8a56-5d2f2726cc2b",
+      "name": "Chain Logic"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.creatomate.com/v2/renders",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_CREATOMATE_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"output_format\": \"mp4\",\n  \"width\": 1280,   \n  \"height\": 720,\n  \"elements\": {{ JSON.stringify($json.creatomate_elements) }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1904,
+        1600
+      ],
+      "id": "1c61ef52-33c6-4dae-9b87-4567a9d7153e",
+      "name": "Video Stitching"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json;\n\n// ดึงค่าตัวแปร (เขียนเผื่อไว้ให้ทั้ง 2 กรณี เผื่อชื่อตัวแปรเปลี่ยน)\nconst masterImage = data.final_image || data.image_scene_7; \nconst masterPrompt = data.clean_prompt || data.prompt_scene_7;\nconst jobId = data.job_id;\n\nconst tasks = [];\n\n// --- สร้างรายการงาน 6 ชิ้น (ถอยหลัง: Step 6 -> 1) ---\nfor (let i = 6; i >= 1; i--) {\n  tasks.push({\n    json: {\n      step_number: i,           // เลข Step ปัจจุบัน (6,5,4...)\n      job_id: jobId,            // เลข Job ID เดิม\n      master_ref: masterImage,  // รูปต้นฉบับ (รูปที่ 7 ที่สวยแล้ว)\n      master_prompt: masterPrompt // Prompt ต้นฉบับ\n    }\n  });\n}\n\nreturn tasks;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        1408
+      ],
+      "id": "10ce06a1-98e5-4f36-8211-399ab78260fa",
+      "name": "Prepare Loop"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "job_id",
+              "lookupValue": "={{ $('Chain Logic').item.json.job_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1488,
+        1600
+      ],
+      "id": "1b4c4008-0def-45a8-aa92-178bb6b71de2",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"google/nano-banana-edit\",\n  \"callBackUrl\": \"https://your-domain.com/api/callback\",\n  \"input\": {\n    \"prompt\": {{ JSON.stringify($('Edit Fields').first().json.output.image_prompt) }},\n    \"image_urls\": [\n      \"https://api.telegram.org/file/botYOUR_TELEGRAM_BOT_TOKEN/{{ $('Get a file1').item.json.result.file_path }}\"\n    ],\n    \"output_format\": \"png\",\n    \"image_size\": \"4:3\",\n    \"strength\": 0.4,\n    \"guidance_scale\": 7.5\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2048,
+        640
+      ],
+      "id": "2e95b7d2-eace-492a-8c23-ba41cdc16c44",
+      "name": "Nano Banana1",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "N0mjFi4r7Ieicf3S",
+          "name": "Non : Kie API Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "Analyze this image for an interior renovation project.\n1. **Identify Structure:** Describe the fixed architectural elements (walls, ceiling type, flooring material, windows, doors, and lighting positions).\n2. **Ignore & Clear:** Explicitly list all temporary items that must be removed, such as people, staff, office supplies, boxes, wires, papers, bags, and loose furniture.\n3. **Goal:** Describe the room as an \"Empty Shell\" — clean, spacious, and unoccupied, ready for a new design. Focus on the room's geometry and perspective only.",
+        "imageUrls": "=https://api.telegram.org/file/botYOUR_TELEGRAM_BOT_TOKEN\n/{{ $json.result.file_path }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        768,
+        608
+      ],
+      "id": "12f06c6a-eb54-457e-9216-65c5039cea96",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "7ToEoyTqlkBEa8Si",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Prompt User Message\nThis is the initial creative brief:\n{{ $('Telegram Trigger1').item.json.message.caption }}\n\nDescription of the product:\n{{ $json.content }}\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": " SYSTEM PROMPT: Senior Interior Architect & Home Staging Expert\n\n-----\n OBJECTIVE\nYour goal is to act as a world-class Interior Architect and Home Staging Expert. You will take a description of a messy, cluttered, or unfinished room and conceptualize its transformation into a \"Dream Home.\"\n\nYou must generate a prompt that creates a **Final Renovated Image (Image 7)**. This image must be 100% clean, fully furnished in a high-end style, and ready for a magazine cover.\n\n**CRITICAL RULES:**\n1.  **PRESERVE STRUCTURE:** You MUST keep the original fixed elements (walls, windows, doors, ceiling height, flooring type) exactly where they are described in the input.\n2.  **DELETE CLUTTER:** You MUST explicitly ignore and remove all temporary items mentioned in the input (people, staff, boxes, wires, trash, existing old furniture, debris). The final result must be pristine.\n3.  **STYLE:** Apply a \"Modern Luxury\" or \"Cozy Minimalist\" aesthetic unless specified otherwise.\n\n-----\n REQUIRED OUTPUTS\n1.  **image_prompt**: A highly detailed prompt for an AI image generator (like Nano Banana/Flux) to create the renovated room.\n2.  **video_prompt**: A cinematic direction for a camera movement string (JSON format) to showcase the room.\n3.  **creative_summary**: A short explanation of the design concept.\n4.  **caption**: A catchy social media caption for the renovation reveal.\n5.  **video_model**: \"veo3\" or \"veo3_fast\".\n6.  **aspect_ratio**: \"9:16\" (Vertical for Reels/TikTok) or \"16:9\" (Horizontal).\n\n-----\n## ** IMAGE PROMPT — “THE DREAM REVEAL”**\nCraft the `image_prompt` as a single, detailed natural language string. Focus on replacing the \"mess\" with \"luxury.\"\n   * **Subject**: A fully renovated, interior-designed room.\n   * **Structure**: Explicitly describe the fixed geometry (e.g., \"A room with a large rectangular window on the left, wooden flooring\").\n   * **Action (Clean Up)**: \"The room is impeccably clean, decluttered, and organized. No people, no trash, no construction tools.\"\n   * **Furnishing**: Describe the new furniture placement (e.g., \"A plush beige sofa in the center, a sleek coffee table, sheer white curtains\").\n   * **Lighting**: \"Soft, natural daylight streaming in, warm ambient indoor lighting, cinematic atmosphere.\"\n   * **Style Keywords**: \"Architectural Digest, 8k resolution, photorealistic, interior design photography, masterpiece, highly detailed.\"\n\n-----\n## ** VIDEO PROMPT — “CINEMATIC ROOM TOUR”**\nCreate a cinematic instruction for the video generation model in JSON format.\n```json\n{\n  \"description\": \"A slow, cinematic reveal of the renovated room. The camera moves smoothly to showcase the space and the new design details.\",\n  \"setting\": \"The same room structure as the input, but fully renovated and decorated in a Modern Luxury style.\",\n  \"camera_type\": \"Professional Cinema Camera (Arri Alexa) with a wide-angle lens.\",\n  \"camera_movement\": \"Slow dolly forward or gentle pan to the right, establishing the spaciousness of the room.\",\n  \"lighting\": \"Bright, airy, and inviting. Sunlight hits the textures of the furniture.\",\n  \"action\": \"Static room with subtle movements like curtains swaying slightly or dust motes dancing in the light.\",\n  \"atmosphere\": \"Peaceful, expensive, clean, and welcoming.\"\n}\n\n\n FINAL OUTPUT FORMAT Your final response must be in this exact JSON format (ensure valid JSON):\n\nJSON\n\n{\n  \"image_prompt\": \"<The full prompt for image generation>\",\n  \"video_prompt\": \"<The JSON string for video direction>\",\n  \"creative_summary\": \"<The design concept>\",\n  \"caption\": \"<Social media caption>\",\n  \"video_model\": \"Seedance 1.5 pro\",\n  \"aspect_ratio\": \"9:16\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        608
+      ],
+      "id": "d0d48a05-2372-4769-9d41-9fe792e5c200",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        912,
+        816
+      ],
+      "id": "806e1303-616e-400f-bafd-37c230b1923d",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "7ToEoyTqlkBEa8Si",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1056,
+        816
+      ],
+      "id": "9ad155f2-5627-4c84-ba2a-c4546ca38981",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"image_prompt\": \"string\",\n  \"video_prompt\": \"stringified JSON\",\n  \"caption\": \"short caption\",\n  \"creative_summary\": \"summary of the combined visual concept\",\n  \"aspect_ratio\": \"vertical or horizontal\",\n  \"video_model\": \"Seedance 1.5 pro\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1184,
+        816
+      ],
+      "id": "a3002836-479c-431c-a436-02145d04777d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9b403f59-3fd9-47ea-aaf3-0abfecfb7024",
+              "name": "output.image_prompt",
+              "value": "={{ $json.output.image_prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "4a92ae4e-2082-465e-8855-79dc794b239f",
+              "name": "output.video_prompt",
+              "value": "={{ $json.output.video_prompt }}",
+              "type": "string"
+            },
+            {
+              "id": "69994060-0f07-4bd5-ae2d-4496852f0d35",
+              "name": "output.caption",
+              "value": "={{ $json.output.caption }}",
+              "type": "string"
+            },
+            {
+              "id": "fb75a5bc-5c17-43be-a02e-7d1654b6bf9f",
+              "name": "output.creative_summary",
+              "value": "={{ $json.output.creative_summary }}",
+              "type": "string"
+            },
+            {
+              "id": "46c81ff3-9d79-4e91-9e83-b8c33d15667c",
+              "name": "output.aspect_ratio",
+              "value": "={{ $json.output.aspect_ratio }}",
+              "type": "string"
+            },
+            {
+              "id": "8f1d5d33-d0c0-4457-a201-6a2e0e21ee6f",
+              "name": "output.video_model",
+              "value": "={{ $json.output.video_model }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1344,
+        656
+      ],
+      "id": "5a0905df-5479-4050-8845-505c32f0832d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $('Telegram Trigger1').item.json.message.chat.id }}",
+        "message": "=นี่คือ Prompt สร้างภาพ\n{{ $json.output.image_prompt }}\nนี่คือ Prompt สร้างวิดีโอ\n{{ $json.output.video_prompt }}\nขนาดวิดีโอ\n{{ $json.output.aspect_ratio }}\nวิดีโอโมเดล\n{{ $json.output.video_model }}",
+        "responseType": "customForm",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "คุณชอบสั่งนี้ไหม",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "ชอบ"
+                  },
+                  {
+                    "option": "ไม่ชอบ"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "อยากเพิ่มอะไรไหม"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1584,
+        656
+      ],
+      "id": "c113dfe3-70d5-4dfa-a678-1f0bf0e2aa2e",
+      "name": "Send a text message2",
+      "webhookId": "efe0d8ba-c8a3-4c27-8cbc-9eb5cd92e696",
+      "credentials": {
+        "telegramApi": {
+          "id": "23iz8Sg6B6BAGihW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "45162841-b7ee-4a0d-a831-d0f89a640013",
+              "leftValue": "={{ $json.data['คุณชอบสั่งนี้ไหม'] }}",
+              "rightValue": "ชอบ",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1792,
+        656
+      ],
+      "id": "802e5bf8-0e8f-4b72-aa61-eedba4f3dfe0",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/jobs/recordInfo",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $('Nano Banana1').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1488,
+        1392
+      ],
+      "id": "b7620134-b424-4a48-adfa-6f433930c313",
+      "name": "Banana URL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "N0mjFi4r7Ieicf3S",
+          "name": "Non : Kie API Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Prompt User Message\nThis is the initial creative brief:\n{{ $('Send a text message2').item.json.data['อยากเพิ่มอะไรไหม'] }}\n\nDescription of the product:\n{{ $('Analyze image').item.json.content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": " SYSTEM PROMPT: Senior Interior Architect & Home Staging Expert\n\n-----\n OBJECTIVE\nYour goal is to act as a world-class Interior Architect and Home Staging Expert. You will take a description of a messy, cluttered, or unfinished room and conceptualize its transformation into a \"Dream Home.\"\n\nYou must generate a prompt that creates a **Final Renovated Image (Image 7)**. This image must be 100% clean, fully furnished in a high-end style, and ready for a magazine cover.\n\n**CRITICAL RULES:**\n1.  **PRESERVE STRUCTURE:** You MUST keep the original fixed elements (walls, windows, doors, ceiling height, flooring type) exactly where they are described in the input.\n2.  **DELETE CLUTTER:** You MUST explicitly ignore and remove all temporary items mentioned in the input (people, staff, boxes, wires, trash, existing old furniture, debris). The final result must be pristine.\n3.  **STYLE:** Apply a \"Modern Luxury\" or \"Cozy Minimalist\" aesthetic unless specified otherwise.\n\n-----\n REQUIRED OUTPUTS\n1.  **image_prompt**: A highly detailed prompt for an AI image generator (like Nano Banana/Flux) to create the renovated room.\n2.  **video_prompt**: A cinematic direction for a camera movement string (JSON format) to showcase the room.\n3.  **creative_summary**: A short explanation of the design concept.\n4.  **caption**: A catchy social media caption for the renovation reveal.\n5.  **video_model**: \"veo3\" or \"veo3_fast\".\n6.  **aspect_ratio**: \"9:16\" (Vertical for Reels/TikTok) or \"16:9\" (Horizontal).\n\n-----\n## ** IMAGE PROMPT — “THE DREAM REVEAL”**\nCraft the `image_prompt` as a single, detailed natural language string. Focus on replacing the \"mess\" with \"luxury.\"\n   * **Subject**: A fully renovated, interior-designed room.\n   * **Structure**: Explicitly describe the fixed geometry (e.g., \"A room with a large rectangular window on the left, wooden flooring\").\n   * **Action (Clean Up)**: \"The room is impeccably clean, decluttered, and organized. No people, no trash, no construction tools.\"\n   * **Furnishing**: Describe the new furniture placement (e.g., \"A plush beige sofa in the center, a sleek coffee table, sheer white curtains\").\n   * **Lighting**: \"Soft, natural daylight streaming in, warm ambient indoor lighting, cinematic atmosphere.\"\n   * **Style Keywords**: \"Architectural Digest, 8k resolution, photorealistic, interior design photography, masterpiece, highly detailed.\"\n\n-----\n## ** VIDEO PROMPT — “CINEMATIC ROOM TOUR”**\nCreate a cinematic instruction for the video generation model in JSON format.\n```json\n{\n  \"description\": \"A slow, cinematic reveal of the renovated room. The camera moves smoothly to showcase the space and the new design details.\",\n  \"setting\": \"The same room structure as the input, but fully renovated and decorated in a Modern Luxury style.\",\n  \"camera_type\": \"Professional Cinema Camera (Arri Alexa) with a wide-angle lens.\",\n  \"camera_movement\": \"Slow dolly forward or gentle pan to the right, establishing the spaciousness of the room.\",\n  \"lighting\": \"Bright, airy, and inviting. Sunlight hits the textures of the furniture.\",\n  \"action\": \"Static room with subtle movements like curtains swaying slightly or dust motes dancing in the light.\",\n  \"atmosphere\": \"Peaceful, expensive, clean, and welcoming.\"\n}\n\n\n FINAL OUTPUT FORMAT Your final response must be in this exact JSON format (ensure valid JSON):\n\nJSON\n\n{\n  \"image_prompt\": \"<The full prompt for image generation>\",\n  \"video_prompt\": \"<The JSON string for video direction>\",\n  \"creative_summary\": \"<The design concept>\",\n  \"caption\": \"<Social media caption>\",\n  \"video_model\": \"veo3\",\n  \"aspect_ratio\": \"9:16\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1648,
+        880
+      ],
+      "id": "8c323d77-d989-4d05-9d9a-fdd52d32c9c3",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "chatgpt-4o-latest"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        1088
+      ],
+      "id": "12413860-1a8c-4597-921e-a27541f8c669",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "7ToEoyTqlkBEa8Si",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        1744,
+        1088
+      ],
+      "id": "1b271235-ee61-4197-955e-263bb929863d",
+      "name": "Think1"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"image_prompt\": \"string\",\n  \"video_prompt\": \"stringified JSON\",\n  \"caption\": \"short caption\",\n  \"creative_summary\": \"summary of the combined visual concept\",\n  \"aspect_ratio\": \"vertical or horizontal\",\n  \"video_model\": \"veo3 or veo3_fast\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1872,
+        1088
+      ],
+      "id": "541a10cd-a9e2-4b6c-b05f-aca61be965c1",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawData = items[0].json.data;\n\n// ตั้งค่าเริ่มต้น (Default)\nlet cleanPrompt = \"N/A\"; \nlet cleanSize = \"4:3\";\nlet finalImage = \"\";\n\n// --- 1. Image (resultJson) ---\ntry {\n  if (typeof rawData.resultJson === 'string') {\n    finalImage = JSON.parse(rawData.resultJson).resultUrls[0];\n  } else if (rawData.resultJson && rawData.resultJson.resultUrls) {\n    finalImage = rawData.resultJson.resultUrls[0];\n  }\n} catch (e) {\n  finalImage = \"Error: Image Not Found\";\n}\n\n// --- 2. Prompt (param) ---\ntry {\n  let params = rawData.param;\n  \n  // ชั้นที่ 1: param\n  if (typeof params === 'string') {\n    params = JSON.parse(params);\n  }\n  \n  //  ชั้นที่ 2 (จุดที่แก้เพิ่ม): เช็คว่า input เป็น text หรือไม่?\n  if (params.input && typeof params.input === 'string') {\n    params.input = JSON.parse(params.input);\n  }\n\n  if (params.input) {\n    if (params.input.prompt) cleanPrompt = params.input.prompt;\n    if (params.input.image_size) cleanSize = params.input.image_size;\n  }\n  \n} catch (e) {\n  cleanPrompt = \"Error: Prompt logic failed (\" + e.message + \")\";\n}\n\n// --- 3. ส่งข้อมูลออกไป ---\nreturn {\n  json: {\n    job_id: $('Telegram Trigger1').first().json.message.message_id,\n    final_image: finalImage,\n    clean_prompt: cleanPrompt,\n    dimension: cleanSize\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1904,
+        1408
+      ],
+      "id": "4656978d-f3c8-45b0-8ab0-d8ff9dba775c",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"nano-banana-pro\",\n  \"input\": {\n    \"image\": \"{{ $json.image_input }}\",\n    \"prompt\": \"{{ $json.prompt_text }} . photorealistic, 8k, highly detailed, architectural photography, renovation site context.\",\n    \"strength\": {{ $json.strength_val }},\n    \"guidance_scale\": 10.0,\n    \"image_size\": \"4:3\",\n    \"scheduler\": \"K_EULER_ANCESTRAL\",\n    \"output_format\": \"png\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1680,
+        1808
+      ],
+      "id": "febae36b-b465-4318-b09e-396f4f746717",
+      "name": "Gen Step Image",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "N0mjFi4r7Ieicf3S",
+          "name": "Non : Kie API Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1856,
+        1808
+      ],
+      "id": "fb76c4c6-e697-4e18-b56a-d0140a6d76c1",
+      "name": "Wait",
+      "webhookId": "bfa65445-9f59-49b2-93b3-2beb0baf28bc"
+    },
+    {
+      "parameters": {
+        "url": "https://api.kie.ai/api/v1/jobs/recordInfo",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "taskId",
+              "value": "={{ $('Gen Step Image').item.json.data.taskId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2080,
+        1808
+      ],
+      "id": "c276d68a-ec75-493d-9631-7f33d84d9091",
+      "name": "Banana URL1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "N0mjFi4r7Ieicf3S",
+          "name": "Non : Kie API Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2112,
+        1600
+      ],
+      "id": "51e1f4c2-fea8-4c04-ae43-d461fb255448",
+      "name": "Wait3",
+      "webhookId": "453c5613-64dd-41b2-a4ea-faea547d691c"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.imgbb.com/1/upload",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "=YOUR_IMGBB_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image",
+              "value": "={{ JSON.parse($json.data.resultJson).resultUrls[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2480,
+        1808
+      ],
+      "id": "b8e315af-8075-4e5d-a234-7429ede4521a",
+      "name": "Upload to ImgBB"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.imgbb.com/1/upload",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "=YOUR_IMGBB_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image",
+              "value": "={{ $json.final_image }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2064,
+        1312
+      ],
+      "id": "e5deafe1-c788-4c42-a01b-7d55170c0a5e",
+      "name": "Upload to ImgBB1"
+    },
+    {
+      "parameters": {
+        "jsCode": "let sourceNode;\ntry {\n    sourceNode = $('Update Image in sheet').first().json;\n} catch (e) {\n    // กรณี Test แล้วหาไม่เจอจริงๆ ให้ Default เป็น 6 ไว้ก่อน เพื่อให้ Code ไม่แดง\n    sourceNode = { \"image_scene_6\": \"test_url\" }; \n}\n\n// หาว่า key ไหนคือ image_scene_X\nconst keys = Object.keys(sourceNode);\nconst sceneKey = keys.find(k => k.startsWith('image_scene_')); \n// ผลลัพธ์จะได้ string เช่น \"image_scene_6\"\n\n// ตัดเอาตัวเลขออกมา (แยกด้วย _)\n// image (0) _ scene (1) _ 6 (2) -> เอาตัวที่ index 2\nlet currentScene = 6; // ค่า Default\nif (sceneKey) {\n    currentScene = parseInt(sceneKey.split('_')[2]);\n}\n\nconst nextScene = currentScene + 1;\n\n// 4. เตรียมข้อมูล\nconst rowData = $json; \nlet partnerUrl = \"\";\n\n// 5. Logic เลือกคู่ \nif (currentScene === 6) {\n    // คู่กับรูป Original (Scene 7)\n    if (rowData[\"image_scene_7\"]) {\n        partnerUrl = rowData[\"image_scene_7\"];\n    } else {\n        // กันเหนียว: ดึงจาก Node แรกสุด\n        try { partnerUrl = $('Get a file1').first().json.url; } catch(e) {}\n    }\n} else {\n    // คู่กับรูป Scene ก่อนหน้า\n    partnerUrl = rowData[\"image_scene_\" + nextScene];\n}\n\nreturn {\n    json: {\n        job_id: rowData.job_id,\n        current_scene: currentScene, // ต้องได้เลข 6\n        partner_scene: nextScene,    // ต้องได้เลข 7\n        start_image: rowData[\"image_scene_\" + currentScene],\n        end_image: partnerUrl,\n        target_column: `video_clip_${currentScene}` // ต้องได้ video_clip_6\n    }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1728,
+        2064
+      ],
+      "id": "652353bb-26c2-4b87-832d-07730b5e9154",
+      "name": "Find My Partner"
+    },
+    {
+      "parameters": {
+        "amount": 60
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2144,
+        2064
+      ],
+      "id": "e3f2ed1c-3237-4e71-a2bd-865b06d83870",
+      "name": "Wait2",
+      "webhookId": "f7db8b5a-5ac8-4150-8aea-30bc27b16bc9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a5eef678-a1f7-4cd9-8ffe-3b0e98d92ce7",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": " IN_QUEUE",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "2d0f68e7-577c-49cf-82b7-a5010292c6ab",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "IN_PROGRESS",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2512,
+        2064
+      ],
+      "id": "d9867435-4b9f-4c9a-8b1c-992933942b3a",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mock Video Generator\nreturn {\n    json: {\n        id: \"mock_job_123\",\n        state: \"completed\",\n        assets: {\n            video: \"https://www.w3schools.com/html/mov_bbb.mp4\" // คลิปตัวอย่างฟรี\n        }\n    }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1264,
+        2528
+      ],
+      "id": "13007258-96c8-463b-adb2-a21cff8a7343",
+      "name": "Mockup video",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/bytedance/seedance/v1.5/pro/image-to-video",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": \"cinematic shot, high quality, smooth transformation\",\n  \"image_url\": \"{{ $json.start_image }}\",\n  \"end_image_url\": \"{{ $json.end_image }}\",\n  \"aspect_ratio\": \"16:9\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1936,
+        2064
+      ],
+      "id": "59d00e21-f6ff-459a-a2bf-128e94dd7d0d",
+      "name": "Fal.ai",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "7YReBjIDxstHIB9B",
+          "name": "Fal.ai Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const partnerData = $('Find My Partner').first().json;\n\n// --- จุดที่แก้: นักสืบหา URL (รองรับทุกท่าของ Fal/Seedance) ---\nlet videoUrl = \"\";\n\n// ฟังก์ชันช่วยเจาะดูไส้ใน JSON (Safe Navigation)\nconst get = (obj, path) => path.split('.').reduce((acc, part) => acc && acc[part], obj);\n\n// ไล่เช็คทุกซอกทุกมุม\nif (get($json, 'video.url')) {\n    videoUrl = $json.video.url;             // แบบมาตรฐาน Fal\n} else if (get($json, 'output.video.url')) {\n    videoUrl = $json.output.video.url;      // แบบ Seedance\n} else if (get($json, 'output.url')) {\n    videoUrl = $json.output.url;            // แบบบางโมเดล\n} else if (get($json, 'assets.video')) {\n    videoUrl = $json.assets.video;          // แบบ Luma \n} else {\n    // ถ้าหาไม่เจอจริงๆ ให้ฟ้อง Error พร้อม Status จะได้รู้ว่าเกิดอะไรขึ้น\n    videoUrl = \"Error: Video URL not found (Status: \" + ($json.status || \"Unknown\") + \")\";\n    \n    // Debug: ลองปริ้นท์ JSON ออกมาดู (ดูใน Console Log ถ้าจำเป็น)\n    // console.log($json);\n}\n\n// สร้าง JSON ที่มี key เป็นชื่อคอลัมน์จริงๆ\nconst dynamicColumnName = partnerData.target_column;\n\nreturn {\n    json: {\n        job_id: partnerData.job_id,\n        [dynamicColumnName]: videoUrl \n    }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2896,
+        2080
+      ],
+      "id": "92458f07-b170-4ba4-8c05-b81d91c2550b",
+      "name": "Get Find My Partner"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "job_id": ""
+          },
+          "matchingColumns": [
+            "job_id"
+          ],
+          "schema": [
+            {
+              "id": "job_id",
+              "displayName": "job_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ref_image_url",
+              "displayName": "ref_image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_7",
+              "displayName": "prompt_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_7",
+              "displayName": "image_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_6",
+              "displayName": "prompt_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_6",
+              "displayName": "image_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_5",
+              "displayName": "prompt_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_5",
+              "displayName": "image_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_4",
+              "displayName": "prompt_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_4",
+              "displayName": "image_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_3",
+              "displayName": "prompt_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_3",
+              "displayName": "image_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_2",
+              "displayName": "prompt_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_2",
+              "displayName": "image_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_1",
+              "displayName": "prompt_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_1",
+              "displayName": "image_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_1",
+              "displayName": "video_clip_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_2",
+              "displayName": "video_clip_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_3",
+              "displayName": "video_clip_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_4",
+              "displayName": "video_clip_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_5",
+              "displayName": "video_clip_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_6",
+              "displayName": "video_clip_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "final_video_url",
+              "displayName": "final_video_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "code",
+              "displayName": "code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg",
+              "displayName": "msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3104,
+        2080
+      ],
+      "id": "cea77310-d05b-471c-99c2-4892ed3d637a",
+      "name": "Update video in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const step = $('Chain Logic').item.json.step;\nconst jobId = $('Chain Logic').item.json.job_id;\nconst promptText = $('Chain Logic').item.json.prompt_text;\n\n// ดึงลิ้งค์รูปจาก ImgBB (Node ก่อนหน้า)\nconst imageUrl = items[0].json.data.url;\n\n// สร้าง Object ใหม่ ที่มีแค่ข้อมูลที่เราจะอัปเดตจริงๆ\nconst dataToUpdate = {\n  \"job_id\": jobId\n};\n\n// ใส่ข้อมูลลงไปเฉพาะ Step นี้ (เช่น image_scene_6)\ndataToUpdate[`image_scene_${step}`] = imageUrl;\ndataToUpdate[`prompt_scene_${step}`] = promptText;\n\nreturn { json: dataToUpdate };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2656,
+        1808
+      ],
+      "id": "23b36cc6-fe35-4512-ba41-1432615d6549",
+      "name": "Get image"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "job_id": "={{ $('Chain Logic').item.json.job_id }}",
+            "image_scene_6": "={{ $json.image_scene_6 }}",
+            "prompt_scene_5": "={{ $json.prompt_scene_5 }}",
+            "image_scene_4": "={{ $json.image_scene_4 }}",
+            "image_scene_5": "={{ $json.image_scene_5 }}",
+            "prompt_scene_6": "={{ $json.prompt_scene_6 }}",
+            "prompt_scene_4": "={{ $json.prompt_scene_4 }}",
+            "prompt_scene_3": "={{ $json.prompt_scene_3 }}",
+            "image_scene_3": "={{ $json.image_scene_3 }}",
+            "image_scene_2": "={{ $json.image_scene_2 }}",
+            "prompt_scene_2": "={{ $json.prompt_scene_2 }}",
+            "prompt_scene_1": "={{ $json.prompt_scene_1 }}",
+            "image_scene_1": "={{ $json.image_scene_1 }}"
+          },
+          "matchingColumns": [
+            "job_id"
+          ],
+          "schema": [
+            {
+              "id": "job_id",
+              "displayName": "job_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ref_image_url",
+              "displayName": "ref_image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_7",
+              "displayName": "prompt_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_7",
+              "displayName": "image_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_6",
+              "displayName": "prompt_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_6",
+              "displayName": "image_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_5",
+              "displayName": "prompt_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_5",
+              "displayName": "image_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_4",
+              "displayName": "prompt_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_4",
+              "displayName": "image_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_3",
+              "displayName": "prompt_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_3",
+              "displayName": "image_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_2",
+              "displayName": "prompt_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_2",
+              "displayName": "image_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "prompt_scene_1",
+              "displayName": "prompt_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "image_scene_1",
+              "displayName": "image_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "video_clip_1",
+              "displayName": "video_clip_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_2",
+              "displayName": "video_clip_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_3",
+              "displayName": "video_clip_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_4",
+              "displayName": "video_clip_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_5",
+              "displayName": "video_clip_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "video_clip_6",
+              "displayName": "video_clip_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "final_video_url",
+              "displayName": "final_video_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "code",
+              "displayName": "code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "msg",
+              "displayName": "msg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2832,
+        1808
+      ],
+      "id": "4bac12cc-7e5f-4383-8c54-4d68424dec02",
+      "name": "Update Image in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "job_id",
+              "lookupValue": "={{ $json.job_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1520,
+        2064
+      ],
+      "id": "d8d07b3a-c047-4a1e-a8dc-657e61219fad",
+      "name": "Get task(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ดึงข้อมูลแถว\nconst row = $json; \n\n// รวบรวมคลิปเรียงตามลำดับ (1 -> 6)\nconst clips = [];\nfor (let i = 1; i <= 6; i++) {\n  const url = row[`video_clip_${i}`];\n  if (url) {\n    clips.push(url);\n  }\n}\n\n// สร้าง Elements สำหรับ Creatomate พร้อม Transition\n// เราจะใช้ track 1 เหมือนกันหมด เพื่อให้มันวางต่อกัน\n// แต่ใส่ \"transition\" ให้คลิปถัดไปซ้อนทับคลิปก่อนหน้า\nconst elements = clips.map((url, index) => {\n  // คลิปแรกไม่ต้องมี transition\n  if (index === 0) {\n    return {\n      \"type\": \"video\",\n      \"source\": url,\n      \"track\": 1 \n    };\n  } \n  \n  // คลิปที่ 2 เป็นต้นไปใส่ Transition\n  return {\n    \"type\": \"video\",\n    \"source\": url,\n    \"track\": 1,\n    // transition: null,\n    \"transition\": {\n      \"type\": \"mix\",    // สั่งละลายภาพ (Cross Dissolve)\n      \"duration\": \"1s\"  // ระยะเวลาซ้อนทับ 1 วินาที (ปรับลดได้ถ้าคลิปสั้น)\n    }\n  };\n});\n\nreturn {\n  json: {\n    ...row, //เพื่อรักษารูปภาพและข้อมูลอื่นๆ ไว้\n    creatomate_elements: elements\n  }\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1696,
+        1600
+      ],
+      "id": "270f5f73-b269-4feb-a463-4896c6e49834",
+      "name": "Smooth Transition"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c9240b48-c475-4109-8a65-e05c07ac026b",
+              "leftValue": "={{ $json.data.state }}",
+              "rightValue": "=waiting",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1696,
+        1392
+      ],
+      "id": "2b66cda3-18de-415d-891a-9a232c0e161b",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- 1. ตั้งค่าข้อมูลจำลอง (Mock Data) ---\n// รูป Placeholder (เปลี่ยนขนาดได้ตามต้องการ)\nconst mockImageUrl = \"https://placehold.co/1024x768/EEE/31343C.png?text=MOCK+Banana+API+Result\";\n// Prompt จำลอง\nconst mockPrompt = \"[MOCKUP MODE] A highly detailed luxury house renovation, photorealistic, 8k\";\n// ขนาดจำลอง\nconst mockSize = \"4:3\";\n\n// พยายามดึง Job ID จาก Trigger (ถ้าไม่มีให้สุ่มเอา)\nlet jobId = 9999;\ntry {\n    jobId = $('Telegram Trigger1').first().json.message.message_id;\n} catch (e) {\n    jobId = Math.floor(Math.random() * 100000); // สุ่มเลข Job ID\n}\n\n\n// --- 2. สร้างโครงสร้าง JSON ซ้อน (The Complex Structure) ---\n// เป้าหมาย: สร้าง { data: { resultJson: \"...\", param: \"...\" } }\n\n// จำลองก้อน resultJson (ที่มักจะมาเป็น String)\nconst resultJsonObject = {\n    \"resultUrls\": [mockImageUrl],\n    \"generationTime\": 1.23\n};\nconst resultJsonString = JSON.stringify(resultJsonObject);\n\n// จำลองก้อน param (ที่มักจะมาเป็น String และ input ข้างในอาจเป็น string ซ้อนอีก!)\n// เคสนี้จำลองแบบ input เป็น object ปกติ (พบบ่อยกว่า)\nconst paramObject = {\n    \"input\": {\n        \"prompt\": mockPrompt,\n        \"image_size\": mockSize,\n        \"num_inference_steps\": 30\n    },\n    \"model\": \"banana-sdxl\"\n};\nconst paramString = JSON.stringify(paramObject);\n\n\n// --- 3. ส่งออก (Final Output) ---\n// โครงสร้างนี้จะเหมือนกับที่ออกจาก HTTP Request Node เมื่อ API ทำงานสำเร็จ\nreturn {\n    json: {\n        // จำลองว่ามีตัวแปร data ห่อหุ้มอยู่\n        data: {\n            resultJson: resultJsonString, // ส่งไปเป็น String ให้ Node ถัดไปแกะ\n            param: paramString           // ส่งไปเป็น String ให้ Node ถัดไปแกะ\n        },\n        // แปะ Job ID ไปด้วย (บาง flow อาจต้องการที่ root level)\n        job_id: jobId\n    }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        2528
+      ],
+      "id": "70cfc8f8-f9f5-4c19-8350-ce74445cf70c",
+      "name": "Image Mockup",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// --- 1. ตั้งค่าข้อมูลจำลอง (Mock Data) ---\n// รูป Placeholder (เปลี่ยนขนาดได้ตามต้องการ)\nconst mockImageUrl = \"https://placehold.co/1024x768/EEE/31343C.png?text=MOCK+Banana+API+Result\";\n// Prompt จำลอง\nconst mockPrompt = \"[MOCKUP MODE] A highly detailed luxury house renovation, photorealistic, 8k\";\n// ขนาดจำลอง\nconst mockSize = \"4:3\";\n\n// พยายามดึง Job ID จาก Trigger (ถ้าไม่มีให้สุ่มเอา)\nlet jobId = 9999;\ntry {\n    jobId = $('Telegram Trigger1').first().json.message.message_id;\n} catch (e) {\n    jobId = Math.floor(Math.random() * 100000); // สุ่มเลข Job ID\n}\n\n\n// --- 2. สร้างโครงสร้าง JSON ซ้อน (The Complex Structure) ---\n// เป้าหมาย: สร้าง { data: { resultJson: \"...\", param: \"...\" } }\n\n// จำลองก้อน resultJson (ที่มักจะมาเป็น String)\nconst resultJsonObject = {\n    \"resultUrls\": [mockImageUrl],\n    \"generationTime\": 1.23\n};\nconst resultJsonString = JSON.stringify(resultJsonObject);\n\n// จำลองก้อน param (ที่มักจะมาเป็น String และ input ข้างในอาจเป็น string ซ้อนอีก!)\n// เคสนี้จำลองแบบ input เป็น object ปกติ (พบบ่อยกว่า)\nconst paramObject = {\n    \"input\": {\n        \"prompt\": mockPrompt,\n        \"image_size\": mockSize,\n        \"num_inference_steps\": 30\n    },\n    \"model\": \"banana-sdxl\"\n};\nconst paramString = JSON.stringify(paramObject);\n\n\n// --- 3. ส่งออก (Final Output) ---\n// โครงสร้างนี้จะเหมือนกับที่ออกจาก HTTP Request Node เมื่อ API ทำงานสำเร็จ\nreturn {\n    json: {\n        // จำลองว่ามีตัวแปร data ห่อหุ้มอยู่\n        data: {\n            resultJson: resultJsonString, // ส่งไปเป็น String ให้ Node ถัดไปแกะ\n            param: paramString           // ส่งไปเป็น String ให้ Node ถัดไปแกะ\n        },\n        // แปะ Job ID ไปด้วย (บาง flow อาจต้องการที่ root level)\n        job_id: jobId\n    }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        2528
+      ],
+      "id": "86c44a2d-728d-4dcc-a84b-0b3d7d84df86",
+      "name": "Image Mockup1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ffa13fbc-af5a-4366-bf69-51b369dfdfbe",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "planned",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2320,
+        1600
+      ],
+      "id": "46a33b23-f460-45ab-8286-101a00e79bd7",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = items[0].json;\nconst media = [];\n\n// เรียงรูป 7 -> 1\nconst urls = [row.image_scene_7, row.image_scene_6, row.image_scene_5, row.image_scene_4, row.image_scene_3, row.image_scene_2, row.image_scene_1];\n\nurls.forEach((url, index) => {\n  if(url) {\n    media.push({\n      type: 'photo',\n      media: url,\n      caption: index === 0 ? `Job ID: ${row.job_id} - Renovation Steps` : ''\n    });\n  }\n});\n\nreturn { json: { mediaGroup: media } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        1584
+      ],
+      "id": "4ac2e77b-aa93-4abc-8a2e-72b39ca88824",
+      "name": "Media group"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID",
+          "mode": "list",
+          "cachedResultName": "House Renovate",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/YOUR_GOOGLE_SHEET_ID/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "final_video_url": "={{ $json.url }}",
+            "job_id": "={{ $('Smooth Transition').first().json.job_id }}"
+          },
+          "matchingColumns": [
+            "job_id"
+          ],
+          "schema": [
+            {
+              "id": "job_id",
+              "displayName": "job_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "ref_image_url",
+              "displayName": "ref_image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "dimension",
+              "displayName": "dimension",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_7",
+              "displayName": "prompt_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_7",
+              "displayName": "image_scene_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_6",
+              "displayName": "prompt_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_6",
+              "displayName": "image_scene_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_5",
+              "displayName": "prompt_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_5",
+              "displayName": "image_scene_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_4",
+              "displayName": "prompt_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_4",
+              "displayName": "image_scene_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_3",
+              "displayName": "prompt_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_3",
+              "displayName": "image_scene_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_2",
+              "displayName": "prompt_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_2",
+              "displayName": "image_scene_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "prompt_scene_1",
+              "displayName": "prompt_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "image_scene_1",
+              "displayName": "image_scene_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_1",
+              "displayName": "video_clip_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_2",
+              "displayName": "video_clip_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_3",
+              "displayName": "video_clip_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_4",
+              "displayName": "video_clip_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_5",
+              "displayName": "video_clip_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "video_clip_6",
+              "displayName": "video_clip_6",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "final_video_url",
+              "displayName": "final_video_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2560,
+        1584
+      ],
+      "id": "891ca5d6-82b6-4695-8c11-ac1e51f8fea0",
+      "name": "final_video in Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SijtmghmycMNEmaq",
+          "name": "Non : Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendVideo",
+        "chatId": "={{ $('Telegram Trigger1').first().json.message.chat.id }}",
+        "file": "={{ $('If3').item.json.url }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3392,
+        1680
+      ],
+      "id": "30a9beb3-0cd3-4507-908d-a9cecf125d62",
+      "name": "Send a video",
+      "webhookId": "e2649331-1b34-4d5f-8119-ee7b4b4a46d8",
+      "credentials": {
+        "telegramApi": {
+          "id": "23iz8Sg6B6BAGihW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger1').first().json.message.chat.id }}",
+        "text": "={{ $('Video Stitching').item.json.url }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3392,
+        1424
+      ],
+      "id": "02a697f8-7272-44c4-b97a-c6ad600bda36",
+      "name": "Send a Video url message",
+      "webhookId": "05f9cd51-45d8-4af7-b21a-535cb0953727",
+      "credentials": {
+        "telegramApi": {
+          "id": "23iz8Sg6B6BAGihW",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c9240b48-c475-4109-8a65-e05c07ac026b",
+              "leftValue": "={{ $json.data.state }}",
+              "rightValue": "=waiting",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2256,
+        1808
+      ],
+      "id": "de5335ca-6b23-4382-a4cc-b63b79425a96",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.status_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2336,
+        2064
+      ],
+      "id": "c8f6a610-2f6f-47b6-ac7e-a4ac011eb766",
+      "name": "GET Status",
+      "alwaysOutputData": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "7YReBjIDxstHIB9B",
+          "name": "Fal.ai Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response_url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2720,
+        2080
+      ],
+      "id": "a2040e1b-74c7-4d2c-abc0-01b78fb2b52d",
+      "name": "Get Final Result",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "7YReBjIDxstHIB9B",
+          "name": "Fal.ai Header Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Get a file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file1": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Prepare Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Banana URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Chain Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chain Logic": {
+      "main": [
+        [
+          {
+            "node": "Gen Step Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Stitching": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Loop": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Smooth Transition",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Nano Banana1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nano Banana1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Banana URL": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Upload to ImgBB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gen Step Image": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Banana URL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Banana URL1": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImgBB": {
+      "main": [
+        [
+          {
+            "node": "Get image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to ImgBB1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find My Partner": {
+      "main": [
+        [
+          {
+            "node": "Fal.ai",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "GET Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mockup video": {
+      "main": [
+        []
+      ]
+    },
+    "Fal.ai": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Find My Partner": {
+      "main": [
+        [
+          {
+            "node": "Update video in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get image": {
+      "main": [
+        [
+          {
+            "node": "Update Image in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Image in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get task(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get task(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Find My Partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update video in sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Smooth Transition": {
+      "main": [
+        [
+          {
+            "node": "Video Stitching",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Mockup": {
+      "main": [
+        []
+      ]
+    },
+    "Image Mockup1": {
+      "main": [
+        []
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "final_video in Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Media group": {
+      "main": [
+        [
+          {
+            "node": "Send a Video url message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "final_video in Sheet": {
+      "main": [
+        [
+          {
+            "node": "Media group",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Upload to ImgBB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET Status": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Final Result": {
+      "main": [
+        [
+          {
+            "node": "Get Find My Partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Asia/Bangkok",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "a379aaee-4b56-43c7-a295-646504352708",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5b842cbf775571ba67e4c63c905d43a0013d780ec254358ef2b0df05d87423fb"
+  },
+  "id": "RPGNUQeSs39xp8Jp",
+  "tags": []
+}
